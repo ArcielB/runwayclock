@@ -3,6 +3,10 @@ name = "runwayclock-app"
 version.workspace = true
 edition.workspace = true
 publish.workspace = true
+authors = ["RunwayClock contributors"]
+description = "Local-first, explainable no-work runway calculator"
+homepage = "https://github.com/ArcielB/runwayclock"
+repository = "https://github.com/ArcielB/runwayclock"
 
 [lib]
 name = "runwayclock_app_lib"
@@ -20,3 +24,6 @@ tauri-plugin-dialog = "2.7.2"
 runway-core = { path = "../../crates/runway-core" }
 runway-db = { path = "../../crates/runway-db" }
 runway-import = { path = "../../crates/runway-import" }
+
+[target.'cfg(not(any(target_os = "android", target_os = "ios")))'.dependencies]
+tauri-plugin-single-instance = "2.4.3"

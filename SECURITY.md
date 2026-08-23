@@ -1,9 +1,9 @@
 # Security and financial-data handling
 
-RunwayClock processes highly sensitive local financial data. Please report
-security vulnerabilities privately to the repository maintainers rather than in
-a public issue. A dedicated security contact will be added before the first
-public release.
+RunwayClock processes highly sensitive local financial data. Please use
+[GitHub's private vulnerability report](https://github.com/ArcielB/runwayclock/security/advisories/new)
+instead of opening a public issue. Do not attach real statements, databases, or
+account information to any report.
 
 The intended trust boundary is:
 

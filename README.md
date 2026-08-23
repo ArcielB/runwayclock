@@ -36,6 +36,44 @@ The interface provides:
 
 There is no cloud account, analytics, bank API, or required AI.
 
+## Install on Linux
+
+The recommended installer works without root access on x86_64 and ARM64 Linux.
+It downloads the latest AppImage, verifies the release checksums, extracts it so
+FUSE is not required, adds RunwayClock to the application menu, and installs the
+GNOME widget when GNOME is detected.
+
+```bash
+curl -fsSLO https://github.com/ArcielB/runwayclock/releases/latest/download/runwayclock-installer.sh
+bash runwayclock-installer.sh
+```
+
+Then open **RunwayClock** from the application menu. On a new GNOME widget
+installation, log out and back in once so GNOME Shell discovers the extension.
+
+Update to the newest release without changing financial data:
+
+```bash
+runwayclock-update
+```
+
+Uninstalling preserves the local database by default:
+
+```bash
+runwayclock-uninstall
+```
+
+To intentionally remove both the product and all RunwayClock financial data:
+
+```bash
+runwayclock-uninstall --purge-data
+```
+
+The [GitHub Releases](https://github.com/ArcielB/runwayclock/releases) page also
+provides AppImage, Debian, and RPM packages plus `SHA256SUMS` for manual
+installation. See [Linux support](docs/linux-support.md) for compatibility and
+packaging details.
+
 ## The normal user workflow
 
 ### First statement
@@ -81,7 +119,7 @@ Actual transactions, interpretations, forecast facts, and calculated snapshots
 remain separate. Read [the forecast policy](docs/forecast-v0.md) and
 [architecture boundaries](docs/architecture.md) for detail.
 
-## Install for development on Ubuntu
+## Build for development on Linux
 
 Prerequisites:
 
@@ -89,13 +127,13 @@ Prerequisites:
 - stable Rust
 - Tauri's Linux WebKit/GTK development libraries
 
-Install the system libraries:
+On Ubuntu or Pop!_OS, install the system libraries:
 
 ```bash
 ./scripts/install-linux-dev-deps.sh
 ```
 
-Install and launch:
+Install dependencies and launch the development build:
 
 ```bash
 cd app
@@ -126,7 +164,8 @@ npm run build
 ```
 
 The CI workflow installs Linux dependencies and runs the full set. Release tags
-build draft AppImage and Debian-package releases.
+build and publish checksum-protected x86_64 and ARM64 AppImage, Debian, and RPM
+packages on an Ubuntu 22.04 compatibility baseline.
 
 ## GNOME indicator
 
@@ -137,7 +176,7 @@ RunwayClock writes a sanitized snapshot to:
 ```
 
 The extension never opens SQLite and receives no balances or transaction text.
-Install it on GNOME 42–44 with:
+Install it on GNOME 40–50 with:
 
 ```bash
 ./widgets/gnome/install.sh
@@ -171,6 +210,5 @@ tests/fixtures/          synthetic financial evidence only
 - Android notification ingestion;
 - final public license and security contact.
 
-The Cargo crates remain `publish = false`, and the public repository does not
-yet grant an open-source license. A license must be selected before a formal
-release. No real financial fixture should ever be committed.
+The Cargo crates remain `publish = false`. No real financial fixture should ever
+be committed.
