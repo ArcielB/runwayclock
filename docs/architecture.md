@@ -18,6 +18,14 @@ burn summary; it never opens a database or reads a statement. The Tauri desktop
 application and CLI already call the same API; Android and later clients can do
 the same.
 
+Pop!_OS is the first hands-on Linux test environment, not a platform boundary.
+Shared crates must not depend on Pop!_OS, GNOME, a particular display server, or
+a packaging format. Desktop-specific behavior belongs in adapters such as the
+GNOME extension, while the app and CLI remain independently usable. Prefer XDG
+paths and capability detection so Debian/Ubuntu derivatives, Fedora-family
+systems, Arch-family systems, and other maintained Linux distributions can be
+supported without restructuring the financial engine.
+
 ## Actual and forecast separation
 
 SQLite is authoritative. Its main conceptual groups are:

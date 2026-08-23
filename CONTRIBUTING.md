@@ -28,6 +28,8 @@ Linux contributors need the packages installed by
 ## Architectural rules
 
 - Keep financial arithmetic in Rust and in integer minor units.
+- Treat Pop!_OS as the primary test environment, not as the Linux architecture;
+  preserve broad distro, desktop, and version compatibility.
 - Keep actual transactions, interpretations, forecast facts, and projections
   separate.
 - Preserve imported raw evidence.
