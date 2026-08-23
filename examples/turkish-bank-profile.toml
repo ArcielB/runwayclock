@@ -1,0 +1,18 @@
+# Copy this file and replace the header labels with those from your bank CSV.
+# The imported profile is saved in SQLite and can then be reused by name.
+name = "my-turkish-bank"
+delimiter = ";"
+encoding = "utf-8" # use "windows-1254" if that is what the export uses
+
+[columns]
+date = "Tarih"
+description = "Açıklama"
+amount = "İşlem Tutarı"
+balance = "Bakiye"
+# transaction_id = "İşlem No" # strongly preferred when the bank provides it
+
+[formats]
+date = ["%d.%m.%Y", "%d/%m/%Y", "%Y-%m-%d"]
+decimal_separator = ","
+thousands_separator = "."
+minor_unit_digits = 2

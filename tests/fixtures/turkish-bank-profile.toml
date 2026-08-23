@@ -1,0 +1,16 @@
+name = "synthetic-turkish-bank"
+delimiter = ";"
+encoding = "utf-8"
+
+[columns]
+date = "Tarih"
+description = "Açıklama"
+amount = "İşlem Tutarı"
+balance = "Bakiye"
+transaction_id = "İşlem No"
+
+[formats]
+date = ["%d.%m.%Y"]
+decimal_separator = ","
+thousands_separator = "."
+minor_unit_digits = 2

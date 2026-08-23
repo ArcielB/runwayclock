@@ -1,0 +1,27 @@
+/target/
+/.runwayclock/
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+
+# Real statements and local financial exports must never be committed.
+/private/
+/statements/
+*.csv
+!/tests/fixtures/*.csv
+*.bank.csv
+*.ofx
+*.qfx
+*.qif
+widget.json
+
+# Local configuration and credentials.
+.env
+.env.*
+!.env.example
+
+# Frontend dependencies and generated output.
+/app/node_modules/
+/app/dist/

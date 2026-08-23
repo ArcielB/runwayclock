@@ -1,0 +1,22 @@
+[package]
+name = "runwayclock-app"
+version.workspace = true
+edition.workspace = true
+publish.workspace = true
+
+[lib]
+name = "runwayclock_app_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2.6.3", features = [] }
+
+[dependencies]
+chrono.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+tauri = { version = "2.11.5", features = [] }
+tauri-plugin-dialog = "2.7.2"
+runway-core = { path = "../../crates/runway-core" }
+runway-db = { path = "../../crates/runway-db" }
+runway-import = { path = "../../crates/runway-import" }

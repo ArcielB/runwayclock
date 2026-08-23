@@ -1,0 +1,7 @@
+{
+  "uuid": "runwayclock@runwayclock.local",
+  "name": "RunwayClock",
+  "description": "Persistent no-work runway indicator and shortcut to the RunwayClock dashboard.",
+  "version": 2,
+  "shell-version": ["42", "43", "44"]
+}
