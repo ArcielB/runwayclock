@@ -25,3 +25,4 @@ widget.json
 # Frontend dependencies and generated output.
 /app/node_modules/
 /app/dist/
+/app/src-tauri/gen/

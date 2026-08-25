@@ -26,8 +26,12 @@ if [[ "${1:-}" != "--appimage-extract" ]]; then
     exit 1
 fi
 mkdir -p squashfs-root
+mkdir -p squashfs-root/apprun-hooks
+printf '%s\n' 'present' > squashfs-root/apprun-hooks/test-hook
 cat > squashfs-root/AppRun <<'APPRUN'
 #!/usr/bin/env bash
+app_dir="$(cd -- "$(dirname -- "$0")" && pwd)"
+test -f "$app_dir/apprun-hooks/test-hook"
 printf '%s\n' "RunwayClock test application"
 APPRUN
 chmod +x squashfs-root/AppRun
@@ -79,6 +83,8 @@ run_installer
 
 test -x "$test_data/runwayclock/product/AppRun"
 test -L "$test_bin/runwayclock-app"
+test "$(readlink -- "$test_bin/runwayclock-app")" = \
+    "$test_data/runwayclock/product/runwayclock-app"
 test -L "$test_bin/runwayclock-update"
 test -L "$test_bin/runwayclock-uninstall"
 test "$("$test_bin/runwayclock-app")" = "RunwayClock test application"

@@ -218,6 +218,9 @@ cp -a "$extracted_app/." "$next_install/"
 install -m 0644 "$temporary_dir/runwayclock.png" "$next_install/runwayclock.png"
 install -m 0755 "$temporary_dir/runwayclock-installer.sh" "$next_install/install.sh"
 install -m 0755 "$temporary_dir/runwayclock-uninstall.sh" "$next_install/uninstall.sh"
+printf '#!/usr/bin/env bash\nexec %q "$@"\n' "$install_root/AppRun" \
+    > "$next_install/runwayclock-app"
+chmod 0755 "$next_install/runwayclock-app"
 printf '%s\n' "$tag_name" > "$next_install/VERSION"
 
 if [[ -d "$install_root" ]]; then
@@ -230,7 +233,7 @@ if ! mv "$next_install" "$install_root"; then
 fi
 [[ ! -d "$previous_install" ]] || rm -rf -- "$previous_install"
 
-ln -sfn "$install_root/AppRun" "$bin_home/runwayclock-app"
+ln -sfn "$install_root/runwayclock-app" "$bin_home/runwayclock-app"
 ln -sfn "$install_root/install.sh" "$bin_home/runwayclock-update"
 ln -sfn "$install_root/uninstall.sh" "$bin_home/runwayclock-uninstall"
 
